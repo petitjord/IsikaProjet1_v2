@@ -51,7 +51,7 @@ import javafx.stage.Stage;
 public class ViewPrincipale {
 
 
-	private String fileName = "C:/GitHubRepo/IsikaProjet1/STAGIAIRES.DON";
+	private String fileName = "C:/GitHubRepo/IsikaProjet1_v2/STAGIAIRES.DON";
 
 	private Annuaire annuaire;
 	private VueAjoutStagiaire vueAjoutStagiaire;
@@ -277,7 +277,18 @@ public class ViewPrincipale {
 
 		tableauxList.getColumns().addAll(NomCol, PrenomCol, DepartementCol, PromotionCol, AnneeCol);
 
+		editerMenu.setDisable(true);
+		tableauxList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
+			@Override
+			public void handle(MouseEvent arg0) {
+				if(tableauxList.getSelectionModel().getSelectedItem() == null) {
+					editerMenu.setDisable(true);
+				} else {
+					editerMenu.setDisable(false);
+				}
+			}
+		});
 		editerStagiaireMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -356,7 +367,7 @@ public class ViewPrincipale {
 		//				tableauxList.getSelectionModel().clearSelection();
 		//			}
 		//		});
-
+		editBtn.setDisable(true);
 		tableauxList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
